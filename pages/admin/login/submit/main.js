@@ -51,7 +51,7 @@ export default function submit(){
                 inputError(password)
             }
             else{
-                await axios.post(apiURL + "/admin/log", {user:user.value, password:password.value})
+                await axios.post(apiURL + "/admin/login", {user:user.value, password:password.value})
                     .then(r => {construct({page:"admin", data:r.data})})
                     .catch(r => {
                         if(r.response.status == 404){
