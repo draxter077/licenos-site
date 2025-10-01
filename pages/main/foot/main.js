@@ -11,12 +11,15 @@ export default function foot(){
             box-shadow:0px 0px 2px 0px var(--colorOrange);
             padding:10px 0px;
             font-size:17px;
-            margin:7.5vh 0px 0px 0px;
         }
         >a>img{
             height:28px;
             margin:0px 0px 0px 10px;
             border-radius:5px;
+            transition:transform 0.5s;
+        }
+        >a>img:hover{
+            transform:scale(1.1);
         }
         :responsive{
             font-size:14px;

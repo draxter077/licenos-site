@@ -11,6 +11,7 @@ export default function faq(){
             background:var(--colorBlue);
             border-radius:10px;
             padding:20px 30px;
+            margin:7.5svh 0px;
             box-shadow:0px 0px 2px 1px var(--colorBlue);
         }
         :responsive{

@@ -1,6 +1,7 @@
 import main from "./pages/main/main.js"
-import apostila from "./pages/apostila/main.js"
-import test from "./pages/test/main.js"
+import product from "./pages/product/main.js"
+import creator from "./pages/creator/main.js"
+import admin from "./pages/admin/main.js"
 
 window.cE = function cE(t, stl){
     function addClass(){
@@ -131,23 +132,28 @@ window.cE = function cE(t, stl){
     return(el)
 }
 
-window.construct = function construct(){
+window.construct = function construct(d){
     const root = document.getElementById("root")
     root.innerHTML = ""
-    if(window.location.href.split("br/")[1] != undefined && window.location.href.split("br/")[1] != ""){
-        let path = window.location.href.split("br/")[1]
-        if(path.split("?")[0] == "apostila"){
-            root.appendChild(apostila(path.split("?")[1].split("_")[0]))
-        }
-        else if(path.split("?")[0] == "test"){
-            root.appendChild(test())
+    if(d == undefined){
+        if(window.location.href.split("br/")[1] != undefined && window.location.href.split("br/")[1] != ""){
+            let path = window.location.href.split("br/")[1]
+            if(path.split("?")[0] == "produto"){
+                root.appendChild(product(path.split("?")[1].split("_")[0]))
+            }
+            if(path == "criador"){
+                root.appendChild(creator())
+            }
+            else{
+                root.appendChild(main())
+            }
         }
         else{
-            root.appendChild(main())
+            root.appendChild(admin())
         }
     }
     else{
-        root.appendChild(main())
+        if(d.page == "creator"){root.appendChild(creator(d.data))}
     }
 }
 
@@ -237,5 +243,98 @@ window.stringifyNumber = function stringifyNumber(n){
         
     return(`R$ ${newIntegerPart.split("").reverse().join("")},${newFractionalPart}`)
 }
+
+window.datetime = function datetime(ms){
+    const dat = new Date(ms)
+    let day = dat.getDate()
+    let month = dat.getMonth()
+    let year = dat.getFullYear()
+    let newDay, newMonth
+
+    if(day < 10){newDay = "0" + day}
+    else{newDay = day}
+
+    if(month < 9){newMonth = "0" + (month + 1)}
+    else{newMonth = month + 1}
+
+    let date = `${newDay}/${newMonth}/${year}`
+
+    let hour = dat.getHours()
+    let minutes = dat.getMinutes()
+    let newHour, newMinute
+
+    if(hour < 10){newHour = "0" + hour}
+    else{newHour = hour}
+
+    if(minutes < 10){newMinute = "0" + minutes}
+    else{newMinute = minutes}
+
+    let time = `${newHour}:${newMinute}`
+
+    return({date:date, time:time})
+}
+
+
+
+
+window.templateUser0Data = {
+    id:"c123",
+    name:"Licenos Licenos",
+    email:"contato@licenos.com.br",
+    phonenumber:"(41) 99999-9999",
+    password:"1234321",
+    fee:0.6,
+    afilliate:"",
+    afilliatefee:0
+}
+
+window.templateUser1Data = {
+    id:"c124",
+    name:"Rodrigo Licenos",
+    email:"rodrigo@licenos.com.br",
+    phonenumber:"(41) 99999-9999",
+    password:"1234321",
+    fee:0.6,
+    afilliate:"c123",
+    afilliatefee:0.1
+}
+
+window.templateProductsData = [
+    {
+        id:"p123",
+        creator:"c123",
+        title:"Produto número 1",
+        description:"Alguma coisa alguma coisa alguma coisa",
+        price:11.5,
+        pages:350,
+    },
+    {
+        id:"p124",
+        creator:"c124",
+        title:"Produto número 2",
+        description:"Alguma coisa alguma coisa alguma coisa",
+        price:11.75,
+        pages:350,
+    }
+]
+
+window.templateOrdersData = [
+    {
+        id:"o123",
+        status:"Finalizada",
+        buyer:"b123",
+        product:"p123",
+        price:11.5,
+        time:123785321
+    },
+    {
+        id:"o124",
+        status:"Finalizada",
+        buyer:"b124",
+        product:"p124",
+        price:11.75,
+        time:123785321
+    }
+]
     
 construct()
