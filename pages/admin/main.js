@@ -14,7 +14,8 @@ export default function admin(data){
             {
                 creators:[templateUser0Data, templateUser1Data],
                 products:templateProductsData,
-                orders:templateOrdersData
+                orders:templateOrdersData,
+                buyers:[templateBuyerData]
             }
         ))
     }

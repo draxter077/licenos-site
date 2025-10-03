@@ -299,6 +299,13 @@ window.templateUser1Data = {
     afilliatefee:0.1
 }
 
+window.templateBuyerData = {
+    id:"b123",
+    name:"Buyer Licenos",
+    email:"contato@licenos.com.br",
+    phonenumber:"(41) 99999-9999"
+}
+
 window.templateProductsData = [
     {
         id:"p123",
@@ -330,7 +337,7 @@ window.templateOrdersData = [
     {
         id:"o124",
         status:"Finalizada",
-        buyer:"b124",
+        buyer:"b123",
         product:"p124",
         price:11.75,
         time:123785321

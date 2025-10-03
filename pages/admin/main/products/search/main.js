@@ -1,7 +1,7 @@
 export default function search(){
     let style = `
         {
-            width:50%;
+            width:100%;
             padding:0px 5px;
             color:var(--colorWhite);
             border-bottom:1px solid var(--colorYellow);

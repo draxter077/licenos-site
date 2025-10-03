@@ -1,16 +1,15 @@
-import search from "./search/main.js"
+import button from "./button/main.js"
 
 export default function head(){
     let style = `
         {
             display:flex;
             flex-direction:row;
-            justify-content:space-between;
-            align-items:center;
+            justify-content:flex-end;
             width:100%;
         }`
 
     const head = cE("div", style)
-    head.appendChild(search())
+    head.appendChild(button())
     return(head)
 }

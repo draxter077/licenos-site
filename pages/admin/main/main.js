@@ -3,6 +3,7 @@ import finance from "./finance/main.js"
 import orders from "./orders/main.js"
 import products from "./products/main.js"
 import creators from "./creators/main.js"
+import buyers from "./buyers/main.js"
 
 export default function main(data){
     let style = `
@@ -19,5 +20,6 @@ export default function main(data){
     main.appendChild(orders(data.orders))
     main.appendChild(products(data.products))
     main.appendChild(creators(data.creators))
+    main.appendChild(buyers(data.buyers))
     return(main)
 }
