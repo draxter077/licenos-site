@@ -6,7 +6,7 @@ export default function content(pdts){
             display:flex;
             flex-direction:column;
             width:100%;
-            height:35svh;
+            max-height:35svh;
             overflow-y:scroll;
         }
         :responsive{

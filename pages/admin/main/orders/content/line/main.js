@@ -26,11 +26,8 @@ export default function line(o){
         }`
 
     const line = cE("div", style)
-    line.id = o.id
-    
     let total = 0
-    for(let i = 0; i < o.items.length; i++){total += o.items[i].price*o.items[i].quantity}
-    line.innerHTML = `${o.id}<span>•</span>${o.date} às ${o.hour}<span>•</span>${o.clientcnpj} - ${o.clientname}<span>•</span>${o.items.length} ite${o.items.length > 1 ? "ns" : "m"}<span>•</span>${stringifyNumber(total)}<span>•</span>${o.status}`
+    line.innerHTML = `${o.id}<span>•</span>${datetime(o.time).date} às ${datetime(o.time).time}<span>•</span>${o.product}<span>•</span>${stringifyNumber(o.price)}<span>•</span>${o.status}`
 
     line.addEventListener(
         "click",

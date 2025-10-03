@@ -11,7 +11,7 @@ export default function head(){
             justify-content:space-around;
             width:100%;
             padding:10px 0px;
-            box-shadow:0px 0px 5px 0px var(--colorBlue);
+            box-shadow:0px 0px 5px 0px var(--colorYellow);
         }`
 
     const head = cE("div", style)

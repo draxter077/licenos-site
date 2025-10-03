@@ -9,7 +9,14 @@ export default function admin(data){
 
     const admin = cE("div", style)
     if(data == undefined){
-        admin.appendChild(login())
+        //admin.appendChild(login())
+        admin.appendChild(main(
+            {
+                creators:[templateUser0Data, templateUser1Data],
+                products:templateProductsData,
+                orders:templateOrdersData
+            }
+        ))
     }
     else{
         admin.appendChild(main(data))

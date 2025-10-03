@@ -4,7 +4,7 @@ export default function search(){
             width:100%;
             padding:0px 5px;
             color:var(--colorWhite);
-            border-bottom:1px solid var(--colorOrange);
+            border-bottom:1px solid var(--colorYellow);
             margin:20px 0px 0px;
             font-size:20px;
         }

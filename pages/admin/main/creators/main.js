@@ -2,7 +2,7 @@ import title from "./title/main.js"
 import search from "./search/main.js"
 import content from "./content/main.js"
 
-export default function supplier(ss){
+export default function creators(cs){
     let style = `
         {
             display:flex;
@@ -14,9 +14,9 @@ export default function supplier(ss){
             width:95%;
         }` 
 
-    const supplier = cE("div", style)
-    supplier.appendChild(title())
-    supplier.appendChild(search())
-    supplier.appendChild(content(ss))
-    return(supplier)
+    const creators = cE("div", style)
+    creators.appendChild(title())
+    creators.appendChild(search())
+    creators.appendChild(content(cs))
+    return(creators)
 }

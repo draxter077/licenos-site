@@ -14,6 +14,6 @@ export default function title(){
         }`
 
     const title = cE("div", style)
-    title.innerHTML = "Fornecedores"
+    title.innerHTML = "Criadores"
     return(title)
 }

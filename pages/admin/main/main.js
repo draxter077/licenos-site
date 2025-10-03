@@ -1,12 +1,10 @@
 import head from "./head/main.js"
-import config from "./config/main.js"
 import finance from "./finance/main.js"
 import orders from "./orders/main.js"
 import products from "./products/main.js"
-import clients from "./clients/main.js"
-import suppliers from "./suppliers/main.js"
+import creators from "./creators/main.js"
 
-export default function client(log){
+export default function main(data){
     let style = `
         {
             display:flex;
@@ -15,15 +13,11 @@ export default function client(log){
             width:100%;
         }`
 
-    const client = cE("div", style)
-    console.log(log)
-    
-    client.appendChild(head())
-    client.appendChild(config(log.user))
-    client.appendChild(finance(log.orders))
-    client.appendChild(orders(log.orders))
-    client.appendChild(products(log.products))
-    client.appendChild(clients(log.users))
-    client.appendChild(suppliers(log.suppliers))
-    return(client)
+    const main = cE("div", style)
+    main.appendChild(head())
+    main.appendChild(finance(data.creators, data.orders, data.products))
+    main.appendChild(orders(data.orders))
+    main.appendChild(products(data.products))
+    main.appendChild(creators(data.creators))
+    return(main)
 }

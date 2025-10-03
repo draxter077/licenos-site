@@ -1,4 +1,4 @@
-export default function line(s){
+export default function line(c){
     let style = `
         {
             font-size:18px;
@@ -7,7 +7,6 @@ export default function line(s){
             border-bottom:1px solid var(--colorBlue);
             width:100%;
             color:var(--colorWhite);
-            cursor:pointer;
             transition:background 0.25s;
         }
         :hover{
@@ -23,6 +22,6 @@ export default function line(s){
         }`
 
     const line = cE("div", style)
-    line.innerHTML = `${s.id}<span>•</span>${s.cnpj}<span>•</span>${s.businessName}<span>•</span>${s.email}<span>•</span>${s.phoneNumber}<span>•</span>${s.productsNumber} produtos`
+    line.innerHTML = `${c.id}<span>•</span>${c.name}<span>•</span>${c.email}<span>•</span>${c.phonenumber}`
     return(line)
 }
