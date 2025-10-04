@@ -9,6 +9,7 @@ export default function line(c){
             border-bottom:1px solid var(--colorBlue);
             width:100%;
             color:var(--colorWhite);
+            cursor:pointer;
             transition:background 0.25s;
         }
         :hover{
@@ -29,7 +30,7 @@ export default function line(c){
     line.addEventListener(
         "click",
         async function a(e){
-            let w = window(o, total)
+            let w = window(c)
             document.getElementById("root").appendChild(w)
             await new Promise(resolve => setTimeout(resolve, 100))
             w.style.transform = "scale(1)"

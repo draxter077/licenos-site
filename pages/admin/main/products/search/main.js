@@ -23,7 +23,7 @@ export default function search(){
         "input",
         function a(e){
             let value = search.value
-            let orders = e.target.parentElement.parentElement.children[2].children
+            let orders = e.target.parentElement.children[2].children
             for(let i = 0; i < orders.length; i++){
                 let o = orders[i]
                 if(o.innerHTML.includes(value)){

@@ -2,7 +2,7 @@ import title from "./title/main.js"
 import search from "./search/main.js"
 import content from "./content/main.js"
 
-export default function orders(os){
+export default function orders(os, bs){
     let style = `
         {
             display:flex;
@@ -16,6 +16,6 @@ export default function orders(os){
     const orders = cE("div", style)
     orders.appendChild(title())
     orders.appendChild(search())
-    orders.appendChild(content(os))
+    orders.appendChild(content(os, bs))
     return(orders)
 }

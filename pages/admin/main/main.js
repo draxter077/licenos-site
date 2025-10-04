@@ -17,7 +17,7 @@ export default function main(data){
     const main = cE("div", style)
     main.appendChild(head())
     main.appendChild(finance(data.creators, data.orders, data.products))
-    main.appendChild(orders(data.orders))
+    main.appendChild(orders(data.orders, data.buyers))
     main.appendChild(products(data.products))
     main.appendChild(creators(data.creators))
     main.appendChild(buyers(data.buyers))

@@ -1,8 +1,8 @@
 import head from "./head/main.js"
-import info from "./info/main.js"
-import items from "./items/main.js"
+import body from "./body/main.js"
+import save from "./save/main.js"
 
-export default function window(o, total){
+export default function window(c){
     let style = `
         {
             position:fixed;
@@ -25,7 +25,7 @@ export default function window(o, total){
 
     const window = cE("div", style)
     window.appendChild(head())
-    window.appendChild(info(o, total))
-    window.appendChild(items(o))
+    window.appendChild(body(c))
+    window.appendChild(save(c))
     return(window)
 }

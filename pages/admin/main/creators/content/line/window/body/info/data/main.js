@@ -14,6 +14,6 @@ export default function data(t, v){
 
     const data = cE("div", style)
     data.appendChild(title(t))
-    data.appendChild(value(v))
+    data.appendChild(value(v, t))
     return(data)
 }

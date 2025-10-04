@@ -1,6 +1,6 @@
 import line from "./line/main.js"
 
-export default function content(os){
+export default function content(os, bs){
     let style = `
         {
             display:flex;
@@ -15,6 +15,12 @@ export default function content(os){
 
     const content = cE("div", style)
     os = os.reverse()
-    for(let i = 0; i < os.length; i++){content.appendChild(line(os[i]))}
+    for(let i = 0; i < os.length; i++){
+        let b
+        for(let j = 0; j < bs.length; bs++){
+            if(bs[j].id == os[i].buyer){b = bs[j]; break}
+        }
+        content.appendChild(line(os[i], b))
+    }
     return(content)
 }

@@ -1,8 +1,8 @@
 import head from "./head/main.js"
 import info from "./info/main.js"
-import items from "./items/main.js"
+import confirm from "./confirm/main.js"
 
-export default function window(o, total){
+export default function window(o, b){
     let style = `
         {
             position:fixed;
@@ -25,7 +25,7 @@ export default function window(o, total){
 
     const window = cE("div", style)
     window.appendChild(head())
-    window.appendChild(info(o, total))
-    window.appendChild(items(o))
+    window.appendChild(info(o, b))
+    window.appendChild(confirm(o))
     return(window)
 }

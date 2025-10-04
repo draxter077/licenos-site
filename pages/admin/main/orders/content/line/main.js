@@ -1,6 +1,6 @@
 import window from "./window/main.js"
 
-export default function line(o){   
+export default function line(o, b){   
     let style = `
         {
             font-size:18px;
@@ -26,13 +26,12 @@ export default function line(o){
         }`
 
     const line = cE("div", style)
-    let total = 0
-    line.innerHTML = `${o.id}<span>•</span>${datetime(o.time).date} às ${datetime(o.time).time}<span>•</span>${o.product}<span>•</span>${stringifyNumber(o.price)}<span>•</span>${o.status}`
+    line.innerHTML = `${o.id}<span>•</span>${datetime(o.time).date} às ${datetime(o.time).time}<span>•</span>${o.product}<span>•</span>${o.buyer}<span>•</span>${stringifyNumber(o.price)}<span>•</span>${o.status}`
 
     line.addEventListener(
         "click",
         async function a(e){
-            let w = window(o, total)
+            let w = window(o, b)
             document.getElementById("root").appendChild(w)
             await new Promise(resolve => setTimeout(resolve, 100))
             w.style.transform = "scale(1)"
