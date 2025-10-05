@@ -7,6 +7,7 @@ export default function line(p){
             border-bottom:1px solid var(--colorBlue);
             width:100%;
             color:var(--colorWhite);
+            cursor:pointer;
             transition:background 0.25s;
         }
         :hover{
@@ -21,7 +22,9 @@ export default function line(p){
             width:fit-content;
         }`
 
-    const line = cE("div", style)
+    const line = cE("a", style)
+    line.target = "_blank"
+    line.href = `https://www.licenos.com.br/produto?${p.id}_${p.title.replaceAll(" ", "_")}`
     line.innerHTML = `${p.id}<span>•</span>${p.title}<span>•</span>${stringifyNumber(p.price)}`
     return(line)
 }

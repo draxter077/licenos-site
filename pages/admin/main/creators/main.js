@@ -8,7 +8,7 @@ export default function creators(cs){
             display:flex;
             flex-direction:column;
             width:90%;
-            margin:7.5vh 0px;
+            margin:7.5vh 0px 0px;
         }
         :responsive{
             width:95%;
