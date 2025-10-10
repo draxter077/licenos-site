@@ -33,7 +33,7 @@ export default function book(b){
     const book = cE("a", style)
     book.id = b.id
     book.title = b.title
-    book.href = `https://www.licenos.com.br/apostila?${b.id}_${b.title.replaceAll(" ","_")}`
+    book.href = `https://www.licenos.com.br/produto?${b.id}_${b.title.replaceAll(" ","_")}`
     book.target = "_self"
     book.appendChild(img(b.src))
     book.appendChild(title(b.title))
