@@ -1,5 +1,3 @@
-import window from "./window/main.js"
-
 export default function button(b){
     let style = `
         {
@@ -28,11 +26,34 @@ export default function button(b){
     button.addEventListener(
             "click",
             async () => {
-                let w = window(b)
-                document.body.style.overflow = "hidden"
+                let w = document.createElement("div")
+                w.id = "walletBrick_container"
+                w.style.opacity = 0
                 document.getElementById("root").appendChild(w)
-                await new Promise(resolve => setTimeout(resolve, 5))
-                w.style.transform = "translateX(0%)"
+
+                await axios.post(`${apiURL}/product/newOrder`, {product:b})
+                    .then(resposta => {
+                        console.log(resposta.data)
+                        const publicKey = "APP_USR-f596c9c8-5df7-4ede-9df2-70ef05d3b44c";
+                        const preferenceId = resposta.data.preferenceID;
+                        const mp = new MercadoPago(publicKey);
+                        const bricksBuilder = mp.bricks();
+                        const renderWalletBrick = async (bricksBuilder) => {
+                            await bricksBuilder.create("wallet", "walletBrick_container", {
+                                initialization:{
+                                    preferenceId:preferenceId,
+                                }
+                            })
+                        }
+                        renderWalletBrick(bricksBuilder)
+                        w.click()
+                        w.onsubmit()
+                    })
+                    .catch(response => {
+                        console.log(response.response)
+                        let status = response.response.status
+                        if(status == 502){alert("Ops! Mercado Livre fora do ar")}
+                    })
             }
         )
     return(button)
