@@ -152,7 +152,7 @@ window.construct = function construct(d){
             }
         }
         else{
-            root.appendChild(product(0))
+            root.appendChild(main())
         }
     }
     else{
