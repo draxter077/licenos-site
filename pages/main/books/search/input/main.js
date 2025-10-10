@@ -24,7 +24,7 @@ export default function input(){
 
     function a(e){
         let v = e.target.value
-        let books = e.target.parentElement.parentElement.children[1].children
+        let books = e.target.parentElement.parentElement.children[2].children
         for(let i = 0; i < books.length; i++){
             let b = books[i]
             if(b.title.toLowerCase().includes(v.toLowerCase())){b.style.display = "flex"}

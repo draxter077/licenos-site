@@ -24,7 +24,7 @@ export default function book(b){
         }
         :hover{
             transform:scale(1.05);
-            box-shadow:0px 0px 2px 0px var(--colorYellow);
+            box-shadow:0px 0px 8px 0px var(--colorYellow);
         }
         :hover>button{
             background:var(--colorYellow);

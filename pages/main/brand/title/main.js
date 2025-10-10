@@ -7,7 +7,7 @@ export default function title(){
             font-weight:600;
         }
         :responsive{
-            font-size:28px;
+            font-size:25px;
         }`
 
     const title = cE("div", style)

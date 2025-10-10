@@ -144,16 +144,20 @@ window.construct = function construct(d){
             if(path == "criador"){
                 root.appendChild(creator())
             }
+            else if(path == "admin"){
+                root.appendChild(admin())
+            }
             else{
                 root.appendChild(main())
             }
         }
         else{
-            root.appendChild(admin())
+            root.appendChild(main())
         }
     }
     else{
         if(d.page == "creator"){root.appendChild(creator(d.data))}
+        if(d.page == "admin"){root.appendChild(admin(d.data))}
     }
 }
 

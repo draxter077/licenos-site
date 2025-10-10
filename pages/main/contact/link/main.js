@@ -12,10 +12,15 @@ export default function link(type, t, url){
             aspect-ratio:2;
             border-radius:10px;
             box-shadow:0px 0px 2px 0px var(--colorWhite);
+            cursor:pointer;
+            transition:box-shadow 0.5s;
         }
         :responsive{
             width:80%;
             margin:5px 0px;
+        }
+        :hover{
+            box-shadow:0px 0px 10px 0px var(--colorYellow);
         }`
 
     const link = cE("a", style)

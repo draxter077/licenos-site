@@ -7,7 +7,7 @@ export default function description(){
             text-align:center;
         }
         :responsive{
-            font-size:15px;
+            font-size:14px;
         }`
 
     const description = cE("div", style)
