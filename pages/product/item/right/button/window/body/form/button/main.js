@@ -77,7 +77,7 @@ export default function button(b){
 
                 await axios.post(`${apiURL}/product/newOrder`, {product:b, buyer:{name:name.value, email:email.value, phoneNumber:phone.value}})
                     .then(async resposta => {
-                        const publicKey = "APP_USR-f596c9c8-5df7-4ede-9df2-70ef05d3b44c";
+                        const publicKey = "APP_USR-9b945fd8-fd9b-45d3-8fe9-a0221ffcba71";
                         const preferenceId = resposta.data.preferenceID;
                         const mp = new MercadoPago(publicKey);
                         const bricksBuilder = mp.bricks();
