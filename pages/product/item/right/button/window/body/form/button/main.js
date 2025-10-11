@@ -8,10 +8,10 @@ export default function button(b){
             justify-content:center;
             font-size:17px;
             height:37px;
-            color:var(--colorBlack);
+            color:var(--colorWhite);
             padding:10px 15px;
             border-radius:5px;
-            background:var(--colorWhite);
+            background:var(--colorBlue);
             cursor:pointer;
             transition:all 0.5s;
         }
