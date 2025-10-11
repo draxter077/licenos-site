@@ -11,6 +11,6 @@ export default function payInfo(p){
 
     const payInfo = cE("div", style)
     payInfo.appendChild(price(p))
-    payInfo.appendChild(pix())
+    //payInfo.appendChild(pix())
     return(payInfo)
 }
