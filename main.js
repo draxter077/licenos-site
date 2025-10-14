@@ -2,6 +2,7 @@ import main from "./pages/main/main.js"
 import product from "./pages/product/main.js"
 import creator from "./pages/creator/main.js"
 import admin from "./pages/admin/main.js"
+import finalizarpedido from "./pages/finalizarpedido/main.js"
 
 window.cE = function cE(t, stl){
     function addClass(){
@@ -141,7 +142,10 @@ window.construct = function construct(d){
             if(path.split("?")[0] == "produto"){
                 root.appendChild(product(path.split("?")[1].split("_")[0]))
             }
-            if(path == "criador"){
+            else if(path.split("?")[0] == "finalizarpedido"){
+                root.appendChild(finalizarpedido(path.split("?")[1].split("&")[0]))
+            }
+            else if(path == "criador"){
                 root.appendChild(creator())
             }
             else if(path == "admin"){
@@ -277,75 +281,5 @@ window.datetime = function datetime(ms){
 
     return({date:date, time:time})
 }
-
-
-
-
-window.templateUser0Data = {
-    id:"c123",
-    name:"Licenos Licenos",
-    email:"contato@licenos.com.br",
-    phonenumber:"(41) 99999-9999",
-    password:"1234321",
-    fee:0.6,
-    afilliate:"",
-    afilliatefee:0
-}
-
-window.templateUser1Data = {
-    id:"c124",
-    name:"Rodrigo Licenos",
-    email:"rodrigo@licenos.com.br",
-    phonenumber:"(41) 99999-9999",
-    password:"1234321",
-    fee:0.6,
-    afilliate:"c123",
-    afilliatefee:0.1
-}
-
-window.templateBuyerData = {
-    id:"b123",
-    name:"Buyer Licenos",
-    email:"contato@licenos.com.br",
-    phonenumber:"(41) 99999-9999"
-}
-
-window.templateProductsData = [
-    {
-        id:"p123",
-        creator:"c123",
-        title:"Produto número 1",
-        description:"Alguma coisa alguma coisa alguma coisa",
-        price:11.5,
-        pages:350,
-    },
-    {
-        id:"p124",
-        creator:"c124",
-        title:"Produto número 2",
-        description:"Alguma coisa alguma coisa alguma coisa",
-        price:11.75,
-        pages:350,
-    }
-]
-
-window.templateOrdersData = [
-    {
-        id:"o123",
-        status:"Finalizada",
-        buyer:"b123",
-        product:"p123",
-        price:11.5,
-        time:123785321
-    },
-    {
-        id:"o124",
-        status:"Finalizada",
-        buyer:"b123",
-        product:"p124",
-        price:11.75,
-        time:123785321
-    }
-]
     
 construct()

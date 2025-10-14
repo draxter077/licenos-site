@@ -25,6 +25,6 @@ export default function line(p){
     const line = cE("a", style)
     line.target = "_blank"
     line.href = `https://www.licenos.com.br/produto?${p.id}_${p.title.replaceAll(" ", "_")}`
-    line.innerHTML = `${p.id}<span>•</span>${p.title}<span>•</span>${stringifyNumber(p.price)}`
+    line.innerHTML = `${p.id}<span>•</span>${p.title}<span>•</span>${stringifyNumber(p.price)}<span>•</span>${p.creator}`
     return(line)
 }

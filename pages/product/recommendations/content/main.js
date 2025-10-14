@@ -13,6 +13,9 @@ export default function content(){
         }`
 
     const content = cE("div", style)
-    for(let i = 0; i < books.length; i++){content.appendChild(book(books[books.length - i - 1]))}
+    for(let i = 0; i < 20; i++){
+        let k = Math.floor((Math.random())*books.length)
+        content.appendChild(book(books[k]))
+    }
     return(content)
 }

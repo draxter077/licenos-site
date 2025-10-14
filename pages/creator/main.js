@@ -9,13 +9,7 @@ export default function creator(data){
 
     const creator = cE("div", style)
     if(data == undefined){
-        //creator.appendChild(login())
-        construct({page:"creator", data:{
-            user:templateUser0Data,
-            orders:templateOrdersData,
-            products:templateProductsData,
-            afilliates:[templateUser1Data]
-        }})
+        creator.appendChild(login())
     }
     else{
         axios.defaults.headers.common["userAuth"] = data.user.id

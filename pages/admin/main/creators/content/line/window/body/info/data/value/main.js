@@ -3,8 +3,7 @@ export default function value(v, t){
         {
             font-size:20px;
             color:var(--colorWhite);
-            ${t == "Título" || t == "Descrição" || t == "Link" ? "width:40vw;" : "width:150px;"}
-            ${t == "Link" ? "user-select:text;" : ""}
+            ${t == "Nome" || t == "Email" || t == "Chave Pix" ? "width:40vw;" : "width:150px;"}
         }
         ::placeholder{
             font-style:italic;
@@ -13,16 +12,14 @@ export default function value(v, t){
         }
         :responsive{
             font-size:15px;
-            ${t == "Título" || t == "Descrição" || t == "Link" ? "width:70vw;" : "width:100px;"}
+            ${t == "Nome" || t == "Email" || t == "Chave Pix" ? "width:70vw;" : "width:100px;"}
         }`
 
     let elem = "input"
-    if(t == "Descrição"){elem ="textarea"}
     const value = cE(elem, style)
     value.rows = "1"
-    if(t == "Descrição"){value.rows = "3"}
     value.value = v
-    if(t == "Preço"){value.type = "number"}
-    else if(t == "ID" || t == "Páginas" || t == "Link"){value.disabled = true}
+    if(t == "Taxa Licenos" || t == "Taxa Afiliado"){value.type = "number"}
+    else if(t == "ID" || t == "Nome" || t == "Email" || t == "Telefone" || t == "Chave Pix"){value.disabled = true}
     return(value)
 }

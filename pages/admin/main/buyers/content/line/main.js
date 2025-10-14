@@ -22,6 +22,6 @@ export default function line(b){
         }`
 
     const line = cE("div", style)
-    line.innerHTML = `${b.id}<span>•</span>${b.name}<span>•</span>${b.email}<span>•</span>${b.phonenumber}`
+    line.innerHTML = `${b.id}<span>•</span>${b.name}<span>•</span>${b.email}<span>•</span>${b.phone}`
     return(line)
 }

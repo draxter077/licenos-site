@@ -57,14 +57,20 @@ export default function button(b){
                 inputError(name)
                 inputError(email)
                 inputError(phone)
+                e.target.innerHTML = "Ir para pagamento"
+                e.target.disabled = false
             }
             else if(!(email.value.includes("@gmail.com") || email.value.includes("@hotmail.com") || email.value.includes("@outlook.com") || email.value.includes("@yahoo.com") || email.value.includes("@uol.com"))){
                 showWindow("Insira um e-mail válido")
                 inputError(email)
+                e.target.innerHTML = "Ir para pagamento"
+                e.target.disabled = false
             }
             else if(phone.value.length < 15){
                 showWindow("Insira seu telefone corretamente")
                 inputError(phone)
+                e.target.innerHTML = "Ir para pagamento"
+                e.target.disabled = false
             }
             else{
                 button.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
@@ -75,7 +81,14 @@ export default function button(b){
                 w.style.width = 0
                 document.body.appendChild(w)
 
-                await axios.post(`${apiURL}/product/newOrder`, {product:b, buyer:{name:name.value, email:email.value, phoneNumber:phone.value}})
+                let tempName = name.value.toLowerCase().split(" ")
+                name = ""
+                for(let i = 0; i < tempName.length; i++){
+                    if(i > 0){name += " "}
+                    name += String(tempName[i]).charAt(0).toUpperCase() + String(tempName[i]).slice(1)
+                }
+
+                await axios.post(`${apiURL}/product/newOrder`, {product:b, buyer:{name:name, email:email.value.toLowerCase(), phone:phone.value}})
                     .then(async resposta => {
                         const publicKey = "APP_USR-9b945fd8-fd9b-45d3-8fe9-a0221ffcba71";
                         const preferenceId = resposta.data.preferenceID;
@@ -95,14 +108,11 @@ export default function button(b){
                         document.body.children[4].children[0].children[0].children[0].children[0].children[0].children[0].click()
                     })
                     .catch(response => {
-                        console.log(response)
+                        console.log(response.response.data)
                         let status = response.response.status
-                        if(status == 502){alert("Ops! Mercado Livre fora do ar")}
+                        if(status == 502){showWindow("Ops! Nossos servidores estão sendo atualizados. Tente novamente mais tarde")}
                     })
             }
-
-            e.target.innerHTML = "Ir para pagamento"
-            e.target.disabled = false
         }
     )
     return(button)

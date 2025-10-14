@@ -11,7 +11,7 @@ export default function book(b){
             justify-content:space-between;
             align-items:center;
             height:100%;
-            width:201px;
+            min-width:201px;
             margin:0px 5px;
             padding:10px;
             box-shadow:0px 0px 2px 0px var(--colorWhite);

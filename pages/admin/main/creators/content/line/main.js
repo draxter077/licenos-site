@@ -25,7 +25,7 @@ export default function line(c){
         }`
 
     const line = cE("div", style)
-    line.innerHTML = `${c.id}<span>•</span>${c.name}<span>•</span>${c.email}<span>•</span>${c.phonenumber}`
+    line.innerHTML = `${c.id}<span>•</span>${c.name}<span>•</span>${c.email}<span>•</span>${c.phone}`
 
     line.addEventListener(
         "click",

@@ -8,8 +8,8 @@ export default function line(o, b){
             padding:2px 5px;
             border-bottom:1px solid var(--colorBlue);
             width:100%;
-            ${o.status == "Aguardando confirmação" ? "color:var(--colorBlack);" : "color:var(--colorWhite);"}
-            ${o.status == "Aguardando confirmação" ? "background:var(--colorYellow);" : ""}
+            ${o.status != "Concluído" ? "color:var(--colorBlack);" : "color:var(--colorWhite);"}
+            ${o.status != "Concluído" ? "background:yellow;" : ""}
             cursor:pointer;
             transition:background 0.25s;
         }

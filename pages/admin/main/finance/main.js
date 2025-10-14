@@ -26,8 +26,8 @@ export default function finance(cs, os, ps){
                 if(o.product == p.id){
                     for(let k = 0; k < cs.length; k++){
                         if(p.creator == cs[k].id){
-                            sales += p.price
-                            revenue += p.price*(cs[k].fee - cs[k].afilliatefee)
+                            sales += o.price
+                            revenue += o.price*(cs[k].fee - cs[k].afilliatefee)
                             break
                         }
                     }

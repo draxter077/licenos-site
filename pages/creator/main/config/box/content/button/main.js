@@ -28,8 +28,9 @@ export default function button(data){
 
             let name = e.target.parentElement.children[0].children[0].children[1].value
             let email = e.target.parentElement.children[0].children[1].children[1].value
-            let phoneNumber = e.target.parentElement.children[0].children[2].children[1].value
-            let password = e.target.parentElement.children[0].children[3].children[1].value
+            let phone = e.target.parentElement.children[0].children[2].children[1].value
+            let pix = e.target.parentElement.children[0].children[3].children[1].value
+            let password = e.target.parentElement.children[0].children[4].children[1].value
 
             async function showWindow(t){
                 let w = window(t)
@@ -42,9 +43,9 @@ export default function button(data){
                 document.getElementById("root").removeChild(w)
             }
 
-            if(name != data.name || email != data.email || phoneNumber != data.phoneNumber || (password != data.password && password != "")){
+            if(name != data.name || email != data.email || phone != data.phone || pix != data.pix || (password != data.password && password != "")){
                 if(password == ""){password = data.password}
-                await axios.post(apiURL + "/creator/changeCreatorData", {name:name, email:email, phoneNumber:phoneNumber, password:password})
+                await axios.post(apiURL + "/creator/changeCreatorData", {name:name, email:email, phone:phone, pix:pix, password:password})
                     .then(r => {showWindow("Alteração salva")})
                     .catch(r => {showWindow("Nossos servidores estão em atualização. Aguarde alguns minutos para tentar novamente")})
             }

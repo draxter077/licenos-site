@@ -50,8 +50,13 @@ export default function save(){
                 showWindow("Preencha todos os campos")
             }
             else{
-                if(category.value != "Matemática"){
-                    showWindow("A matéria deve ser alguma destas: Matemática, ")
+                if(category.value != "Português" && category.value != "Redação"
+                    && category.value != "História" && category.value != "Geografia"
+                    && category.value != "Sociologia" && category.value != "Filosofia"
+                    && category.value != "Ensino Religioso" && category.value != "Biologia"
+                    && category.value != "Física" && category.value != "Química" && category.value != "Matemática"
+                ){
+                    showWindow("A matéria deve ser alguma destas: Português, Redação, História, Geografia, Sociologia, Filosofia, Ensino Religioso, Biologia, Física, Química ou Matemática")
                 }
                 else{
                     price = Math.round(Number(price.value)*100)/100
@@ -59,7 +64,7 @@ export default function save(){
 
                     await axios.post(apiURL + "/creator/addProduct", {title:title.value, category:category.value, description:description, price:price, pages:pages.value})
                         .then(r => {
-                            showWindow("Produto salvo pelo ID " + r.data.id)
+                            showWindow("Produto salvo com ID " + r.data.id + ". Mais informações em seu e-mail")
                             e.target.parentElement.children[0].children[0].click()
                             let p = {
                                 id:r.data.id,

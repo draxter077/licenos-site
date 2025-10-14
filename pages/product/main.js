@@ -1,10 +1,10 @@
 import head from "./head/main.js"
 import item from "./item/main.js"
 import recommendations from "./recommendations/main.js"
-import faq from "./faq/main.js"
-import contact from "./contact/main.js"
-import about from "./about/main.js"
-import foot from "./foot/main.js"
+import faq from "../_common/faq/main.js"
+import contact from "../_common/contact/main.js"
+import about from "../_common/about/main.js"
+import foot from "../_common/foot/main.js"
 
 import books from "../../books.js"
 
@@ -15,7 +15,8 @@ export default function product(id){
             flex-direction:column;
             align-items:center;
             width:100%;
-            animation:siuyrw 0.5s linear 0s forwards 1;
+            opacity:0;
+            animation:siuyrw 0.5s linear 0.5s forwards 1;
         }
         @keyframes siuyrw{
             0%[opacity:0;]

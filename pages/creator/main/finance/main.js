@@ -27,11 +27,11 @@ export default function finance(u, os, ps, afs){
             for(let j = 0; j < ps.length; j++){
                 let p = ps[j]
                 if(o.product == p.id){
-                    if(p.creator == u.id){sales += p.price*(1 - u.fee)}
+                    if(p.creator == u.id){sales += o.price*(1 - u.fee)}
                     else{
                         for(let k = 0; k < afs.length; k++){
                             if(p.creator == afs[k].id){
-                                sales += p.price*afs[k].afilliatefee
+                                sales += o.price*afs[k].afilliatefee
                                 break
                             }
                         }

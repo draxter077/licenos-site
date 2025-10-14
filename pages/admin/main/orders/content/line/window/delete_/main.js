@@ -1,34 +1,31 @@
 import window from "./window/main.js"
 
-export default function confirm(o){
+export default function delete_(o){
     let style = `
         {
             font-size:20px;
             height:40px;
             color:var(--colorWhite);
-            background:var(--colorBlack);
+            background:red;
             padding:5px 10px;
             border-radius:5px;
             width:fit-content;
             cursor:pointer;
             transition:background 0.5s;
         }
-        :hover{
-            background:var(--colorBlue);
-        }
         :responsive{
             font-size:16px;
             height:36px;
         }`
 
-    const confirm = cE("button", style)
-    confirm.innerHTML = "Finalizar"
+    const delete_ = cE("button", style)
+    delete_.innerHTML = "Excluir"
 
-    confirm.addEventListener(
+    delete_.addEventListener(
         "click",
         async () => {
-            confirm.disabled = true
-            confirm.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
+            delete_.disabled = true
+            delete_.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
             async function showWindow(t){
                 let w = window(t)
@@ -41,15 +38,15 @@ export default function confirm(o){
                 document.getElementById("root").removeChild(w)
             }
 
-            await axios.post(apiURL + "/product/updates", {src:"licenos", action:"endOrder", orderID:o.id})
+            await axios.post(apiURL + "/product/updates", {src:"licenos", action:"deleteOrder", orderID:o.id})
                 .then(r => {
-                    showWindow("Pedido enviado. Recarregue a página para ver as alterações")
+                    showWindow("Pedido excluído. Recarregue a página para ver as alterações")
                 })
                 .catch(r => showWindow("Algum problema foi encontrado"))
 
-            confirm.innerHTML = "Finalizar"
-            confirm.disabled = false
+            delete_.innerHTML = "Excluir"
+            delete_.disabled = false
         }
     )
-    return(confirm)
+    return(delete_)
 }

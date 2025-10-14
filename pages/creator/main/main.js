@@ -4,8 +4,10 @@ import finance from "./finance/main.js"
 import orders from "./orders/main.js"
 import products from "./products/main.js"
 import afilliates from "./afilliates/main.js"
+import contact from "../../_common/contact/main.js"
+import foot from "../../_common/foot/main.js"
 
-export default function client(data){
+export default function main(data){
     let style = `
         {
             display:flex;
@@ -14,12 +16,14 @@ export default function client(data){
             width:100%;
         }`
 
-    const client = cE("div", style)
-    client.appendChild(head())
-    client.appendChild(config(data.user))
-    client.appendChild(finance(data.user, data.orders, data.products, data.afilliates))
-    client.appendChild(orders(data.user, data.orders, data.products, data.afilliates))
-    client.appendChild(products(data.orders, data.products))
-    client.appendChild(afilliates(data.user, data.afilliates))
-    return(client)
+    const main = cE("div", style)
+    main.appendChild(head())
+    main.appendChild(config(data.user))
+    main.appendChild(finance(data.user, data.orders, data.products, data.afilliates))
+    main.appendChild(orders(data.user, data.orders, data.products, data.afilliates))
+    main.appendChild(products(data.orders, data.products))
+    main.appendChild(afilliates(data.user, data.afilliates))
+    main.appendChild(contact())
+    main.appendChild(foot())
+    return(main)
 }

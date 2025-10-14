@@ -9,7 +9,8 @@ export default function books(){
             flex-direction:column;
             width:90%;
             margin:7.5vh 0px;
-            animation:ergbd 0.5s linear 0s forwards 1;
+            opacity:0;
+            animation:ergbd 0.5s linear 1s forwards 1;
         }
         @keyframes ergbd{
             0%[opacity:0]

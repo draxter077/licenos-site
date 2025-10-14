@@ -4,6 +4,8 @@ import orders from "./orders/main.js"
 import products from "./products/main.js"
 import creators from "./creators/main.js"
 import buyers from "./buyers/main.js"
+import contact from "../../_common/contact/main.js"
+import foot from "../../_common/foot/main.js"
 
 export default function main(data){
     let style = `
@@ -21,5 +23,7 @@ export default function main(data){
     main.appendChild(products(data.products))
     main.appendChild(creators(data.creators))
     main.appendChild(buyers(data.buyers))
+    main.appendChild(contact())
+    main.appendChild(foot())
     return(main)
 }

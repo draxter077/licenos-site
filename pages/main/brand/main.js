@@ -13,7 +13,7 @@ export default function brand(){
             margin:5svh 0px;
             color:var(--colorBlack);
             opacity:0;
-            animation:asjdf 0.5s linear 0s forwards 1;
+            animation:asjdf 0.5s linear 0.5s forwards 1;
         }
         @keyframes asjdf{
             0%[opacity:0]

@@ -12,5 +12,6 @@ export default function content(){
     const content = cE("div", style)
     content.appendChild(input("Nome"))
     content.appendChild(input("Telefone"))
+    content.appendChild(input("Chave Pix"))
     return(content)
 }

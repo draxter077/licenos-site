@@ -22,20 +22,20 @@ export default function content(u, os, ps, afs){
 
     const content = cE("div", style)
 
-    let total, type
     for(let i = os.length - 1; i >= 0; i--){
+        let total, type
         let o = os[i]
         for(let j = 0; j < ps.length; j++){
             let p = ps[j]
             if(o.product == p.id){
                 if(p.creator == u.id){
-                    total = p.price*(1 - u.fee)
+                    total = o.price*(1 - u.fee)
                     type = "Próprio"
                 }
                 else{
                     for(let k = 0; k < afs.length; k++){
                         if(p.creator == afs[k].id){
-                            total = p.price*afs[k].afilliatefee
+                            total = o.price*afs[k].afilliatefee
                             type = "Afiliado"
                             break
                         }

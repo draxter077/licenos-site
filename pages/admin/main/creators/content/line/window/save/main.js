@@ -4,6 +4,7 @@ export default function save(c){
     let style = `
         {
             font-size:20px;
+            height:40px;
             color:var(--colorWhite);
             background:var(--colorBlack);
             padding:5px 10px;
@@ -17,6 +18,7 @@ export default function save(c){
         }
         :responsive{
             font-size:16px;
+            height:36px;
         }`
 
     const save = cE("button", style)
@@ -25,15 +27,14 @@ export default function save(c){
     save.addEventListener(
         "click",
         async function a(e){
-            e.target.disabled = true
+            save.disabled = true
+            save.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
-            let infos = e.target.parentElement.children[1]
-            let name = infos.children[1]
-            let email = infos.children[2]
-            let phonenumber = infos.children[3]
-            let fee = infos.children[4]
-            let afilliate = infos.children[5]
-            let afilliatefee = infos.children[6]
+
+            let infos = e.target.parentElement.children[1].children[0]
+            let fee = infos.children[5]
+            let afilliate = infos.children[6]
+            let afilliatefee = infos.children[7]
 
             async function showWindow(t){
                 let w = window(t)
@@ -46,17 +47,17 @@ export default function save(c){
                 document.getElementById("root").removeChild(w)
             }
 
-            if(name.value != c.name || email.value != c.email || phonenumber.value != c.phonenumber
-                || fee.value != c.fee || afilliate.value != c.afilliate || afilliatefee.value != c.afilliatefee){            
-                await axios.post(apiURL + "/admin/changeCreatorData", {id:c.id, name:name.value, email:email.value, phonenumber:phonenumber.value, fee:fee.value, afilliate:afilliate.value, afilliatefee:afilliatefee.value})
+            if(fee.value != c.fee || afilliate.value != c.afilliate || afilliatefee.value != c.afilliatefee){            
+                await axios.post(apiURL + "/admin/changeCreatorData", {id:c.id, fee:fee.value, afilliate:afilliate.value, afilliatefee:afilliatefee.value})
                     .then(r => {
                         showWindow("Alterações salvas. Talvez seja preciso atualizar a página para que as alterações sejam mostradas nessa sessão")
                         e.target.parentElement.children[0].children[0].click()
                     })
-                    .catch(r => alert("Algum problema foi encontrado"))
+                    .catch(r => showWindow("Algum problema foi encontrado"))
             }
 
-            e.target.disabled = false
+            save.disabled = false
+            save.innerHTML = "Salvar"
         }
     )
     return(save)

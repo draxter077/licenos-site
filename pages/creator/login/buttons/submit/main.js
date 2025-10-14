@@ -24,7 +24,8 @@ export default function submit(){
 
             let signupDiv = e.target.parentElement.parentElement.children[1].children[0].children[0]
             let name = signupDiv.children[0]
-            let phoneNumber = signupDiv.children[1]
+            let phone = signupDiv.children[1]
+            let pix = signupDiv.children[2]
             let email = e.target.parentElement.parentElement.children[1].children[1]
             let password = e.target.parentElement.parentElement.children[1].children[2]
 
@@ -57,7 +58,7 @@ export default function submit(){
                             .then(r => {showWindow("Uma senha temporária foi enviada para o seu email")})
                             .catch(r => {
                                 if(r.response.status == 404){
-                                    showWindow("CNPJ não encontrado")
+                                    showWindow("Email não encontrado")
                                     inputError(cnpj)
                                 }
                                 else{
@@ -66,7 +67,7 @@ export default function submit(){
                             })
                     }
                     else{
-                        await axios.post(apiURL + "/creator/log", {email:email.value, password:password.value})
+                        await axios.post(apiURL + "/creator/log", {email:email.value.toLowerCase(), password:password.value})
                             .then(r => {construct({page:"creator", data:r.data})})
                             .catch(r => {
                                 if(r.response.status == 404){
@@ -85,16 +86,24 @@ export default function submit(){
                 }
             }
             else{
-                if(name.value.length == 0 || phoneNumber.value.length == 0 || email.value.length == 0 || password.value.length == 0 || name.value == undefined || phoneNumber.value == undefined || email.value == undefined || password.value == undefined){
+                if(name.value.length == 0 || phone.value.length == 0 || pix.value.length == 0 || email.value.length == 0 || password.value.length == 0 || name.value == undefined || phone.value == undefined || pix.value == undefined || email.value == undefined || password.value == undefined){
                     showWindow("Preencha todos os campos")
                     inputError(name)
-                    inputError(phoneNumber)
+                    inputError(phone)
+                    inputError(pix)
                     inputError(email)
                     inputError(password)
                 }
                 else{
                     let afilliateID = window.location.href.split("criador?")[1]
-                    await axios.post(apiURL + "/creator/sign", {name:name.value, phoneNumber:phoneNumber.value, email:email.value, password:password.value, afilliateID:afilliateID})
+
+                    let tempName = name.value.toLowerCase().split(" ")
+                    name = ""
+                    for(let i = 0; i < tempName.length; i++){
+                        if(i > 0){name += " "}
+                        name += String(tempName[i]).charAt(0).toUpperCase() + String(tempName[i]).slice(1)
+                    }
+                    await axios.post(apiURL + "/creator/sign", {name:name, phone:phone.value, pix:pix.value, email:email.value.toLowerCase(), password:password.value, afilliateID:afilliateID})
                         .then(r => {construct({page:"creator", data:r.data})})
                         .catch(r => {
                             if(r.response.status == 409){
