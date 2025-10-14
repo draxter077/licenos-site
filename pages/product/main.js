@@ -1,10 +1,10 @@
 import head from "./head/main.js"
 import item from "./item/main.js"
 import recommendations from "./recommendations/main.js"
-import faq from "../_common/faq/main.js"
-import contact from "../_common/contact/main.js"
-import about from "../_common/about/main.js"
-import foot from "../_common/foot/main.js"
+import faq from "../common/faq/main.js"
+import contact from "../common/contact/main.js"
+import about from "../common/about/main.js"
+import foot from "../common/foot/main.js"
 
 import books from "../../books.js"
 

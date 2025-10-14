@@ -4,8 +4,8 @@ import finance from "./finance/main.js"
 import orders from "./orders/main.js"
 import products from "./products/main.js"
 import afilliates from "./afilliates/main.js"
-import contact from "../../_common/contact/main.js"
-import foot from "../../_common/foot/main.js"
+import contact from "../../common/contact/main.js"
+import foot from "../../common/foot/main.js"
 
 export default function main(data){
     let style = `
