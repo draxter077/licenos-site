@@ -156,7 +156,7 @@ window.construct = function construct(d){
             }
         }
         else{
-            root.appendChild(main())
+            root.appendChild(creator())
         }
     }
     else{
@@ -253,7 +253,7 @@ window.stringifyNumber = function stringifyNumber(n){
 }
 
 window.datetime = function datetime(ms){
-    const dat = new Date(ms)
+    const dat = new Date(Number(ms))
     let day = dat.getDate()
     let month = dat.getMonth()
     let year = dat.getFullYear()

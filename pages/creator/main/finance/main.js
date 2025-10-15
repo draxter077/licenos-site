@@ -1,6 +1,6 @@
 import value from "./value/main.js"
 
-export default function finance(u, os, ps, afs){
+export default function finance(u, os, afsos, afsps, afs){
     let style = `
         {
             display:flex;
@@ -24,21 +24,17 @@ export default function finance(u, os, ps, afs){
     for(let i = 0; i < os.length; i++){
         let o = os[i]
         if(datetime(o.time).date.slice(3,10) == monthYear){
-            for(let j = 0; j < ps.length; j++){
-                let p = ps[j]
-                if(o.product == p.id){
-                    if(p.creator == u.id){sales += o.price*(1 - u.fee)}
-                    else{
-                        for(let k = 0; k < afs.length; k++){
-                            if(p.creator == afs[k].id){
-                                sales += o.price*afs[k].afilliatefee
-                                break
-                            }
-                        }
-                    }
-                    break
-                }
-            }
+            sales += o.price*(1 - u.fee)
+        }
+    }
+    for(let i = 0; i < afsos.length; i++){
+        let afso = afsos[i]
+        if(datetime(afso.time).date.slice(3,10) == monthYear){
+            let p
+            for(let j = 0; j < afsps.length; j++){if(afso.product == afsps[j].id){p = afsps[j];break}}
+            let af
+            for(let j = 0; j < afs.length; j++){if(p.creator == afs[j].id){af = afs[j];break}}
+            sales += afso.price*af.afilliatefee
         }
     }
 

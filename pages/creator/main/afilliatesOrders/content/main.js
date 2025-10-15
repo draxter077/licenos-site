@@ -1,6 +1,6 @@
 import line from "./line/main.js"
 
-export default function content(u, os){
+export default function content(afs, os, ps){
     let style = `
         {
             display:flex;
@@ -24,7 +24,11 @@ export default function content(u, os){
 
     for(let i = os.length - 1; i >= 0; i--){
         let o = os[i]
-        content.appendChild(line(o, o.price*(1 - u.fee)))
+        let p
+        for(let j = 0; j < ps.length; j++){if(o.product == ps[j].id){p = ps[j];break}}
+        let af
+        for(let j = 0; j < afs.length; j++){if(p.creator == afs[j].id){af = afs[j];break}}
+        content.appendChild(line(o, o.price*af.afilliatefee))
     }
 
     if(os.length == 0){content.innerHTML = "<span>Sem pedidos ainda! :(</span>"}

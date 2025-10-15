@@ -4,6 +4,7 @@ export default function button(data){
     let style = `
         {
             font-size:20px;
+            height:40px;
             color:var(--colorWhite);
             background:var(--colorBlue);
             padding:5px 10px;
@@ -16,6 +17,7 @@ export default function button(data){
         }
         :responsive{
             font-size:15px;
+            height:35px;
         }`
 
     const button = cE("button", style)
@@ -25,6 +27,7 @@ export default function button(data){
         "click",
         async function a(e){
             e.target.disabled = true
+            e.target.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
             let name = e.target.parentElement.children[0].children[0].children[1].value
             let email = e.target.parentElement.children[0].children[1].children[1].value
@@ -43,14 +46,21 @@ export default function button(data){
                 document.getElementById("root").removeChild(w)
             }
 
+            let tempName = name.toLowerCase().split(" ")
+            name = ""
+            for(let i = 0; i < tempName.length; i++){
+                if(i > 0){name += " "}
+                name += String(tempName[i]).charAt(0).toUpperCase() + String(tempName[i]).slice(1)
+            }
             if(name != data.name || email != data.email || phone != data.phone || pix != data.pix || (password != data.password && password != "")){
                 if(password == ""){password = data.password}
-                await axios.post(apiURL + "/creator/changeCreatorData", {name:name, email:email, phone:phone, pix:pix, password:password})
+                await axios.post(apiURL + "/creator/changeCreatorData", {name:name, email:email.toLowerCase(), phone:phone, pix:pix, password:password})
                     .then(r => {showWindow("Alteração salva")})
                     .catch(r => {showWindow("Nossos servidores estão em atualização. Aguarde alguns minutos para tentar novamente")})
             }
 
             e.target.disabled = false
+            e.target.innerHTML = "Salvar"
         }
     )
     return(button)

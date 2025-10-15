@@ -5,6 +5,7 @@ export default function submit(){
         {
             font-size:20px;
             padding:5px 10px;
+            height:40px;
             background:var(--colorYellow);
             color:var(--colorBlack);
             border-radius:5px;
@@ -47,6 +48,7 @@ export default function submit(){
             }
             
             if(e.target.innerHTML == "Entrar"){
+                e.target.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
                 if(email.value.length == 0 || password.value.length == 0 || email.value == undefined || password.value == undefined){
                     showWindow("Preencha todos os campos")
                     inputError(email)
@@ -67,7 +69,7 @@ export default function submit(){
                             })
                     }
                     else{
-                        await axios.post(apiURL + "/creator/log", {email:email.value.toLowerCase(), password:password.value})
+                        await axios.post(apiURL + "/creator/login", {email:email.value.toLowerCase(), password:password.value})
                             .then(r => {construct({page:"creator", data:r.data})})
                             .catch(r => {
                                 if(r.response.status == 404){
@@ -84,8 +86,10 @@ export default function submit(){
                             })
                     }
                 }
+                e.target.innerHTML = "Entrar"
             }
             else{
+                e.target.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
                 if(name.value.length == 0 || phone.value.length == 0 || pix.value.length == 0 || email.value.length == 0 || password.value.length == 0 || name.value == undefined || phone.value == undefined || pix.value == undefined || email.value == undefined || password.value == undefined){
                     showWindow("Preencha todos os campos")
                     inputError(name)
@@ -95,7 +99,7 @@ export default function submit(){
                     inputError(password)
                 }
                 else{
-                    let afilliateID = window.location.href.split("criador?")[1]
+                    let afilliateID = location.href.toString().split("criador?")[1]
 
                     let tempName = name.value.toLowerCase().split(" ")
                     name = ""
@@ -115,8 +119,8 @@ export default function submit(){
                             }
                         })
                 }
+                e.target.innerHTML = "Criar"
             }
-            
             e.target.disabled = false
         }
     )

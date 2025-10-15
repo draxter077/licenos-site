@@ -5,6 +5,7 @@ export default function save(){
     let style = `
         {
             font-size:20px;
+            height:40px;
             color:var(--colorWhite);
             background:var(--colorBlue);
             padding:5px 10px;
@@ -18,6 +19,7 @@ export default function save(){
         }
         :responsive{
             font-size:16px;
+            height:36px;
         }`
 
     const save = cE("button", style)
@@ -27,6 +29,7 @@ export default function save(){
         "click",
         async function a(e){
             e.target.disabled = true
+            e.target.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
             let title = e.target.parentElement.children[2].children[0].children[1]
             let category = e.target.parentElement.children[2].children[1].children[1]
@@ -80,6 +83,7 @@ export default function save(){
             }
 
             e.target.disabled = false
+            e.target.innerHTML = "Salvar"
         }
     )
     return(save)
