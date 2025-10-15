@@ -32,9 +32,9 @@ export default function save(c){
 
 
             let infos = e.target.parentElement.children[1].children[0]
-            let fee = infos.children[5]
-            let afilliate = infos.children[6]
-            let afilliatefee = infos.children[7]
+            let fee = infos.children[5].children[1]
+            let afilliate = infos.children[6].children[1]
+            let afilliatefee = infos.children[7].children[1]
 
             async function showWindow(t){
                 let w = window(t)

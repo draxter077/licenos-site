@@ -10,7 +10,7 @@ export default function line(o, b){
             width:100%;
             ${o.status != "Concluído" ? "color:var(--colorBlack);" : "color:var(--colorWhite);"}
             ${o.status != "Concluído" ? "background:yellow;" : ""}
-            cursor:pointer;
+            ${o.status != "Concluído" ? "cursor:pointer;" : ""}
             transition:background 0.25s;
         }
         :hover{
@@ -28,14 +28,16 @@ export default function line(o, b){
     const line = cE("div", style)
     line.innerHTML = `${o.id}<span>•</span>${datetime(o.time).date} às ${datetime(o.time).time}<span>•</span>${o.product}<span>•</span>${o.buyer}<span>•</span>${stringifyNumber(o.price)}<span>•</span>${o.status}`
 
-    line.addEventListener(
-        "click",
-        async function a(e){
-            let w = window(o, b)
-            document.getElementById("root").appendChild(w)
-            await new Promise(resolve => setTimeout(resolve, 100))
-            w.style.transform = "scale(1)"
-        }
-    )
+    if(o.status != "Concluído"){
+        line.addEventListener(
+            "click",
+            async function a(e){
+                let w = window(o, b)
+                document.getElementById("root").appendChild(w)
+                await new Promise(resolve => setTimeout(resolve, 100))
+                w.style.transform = "scale(1)"
+            }
+        )
+    }
     return(line)
 }

@@ -4,6 +4,7 @@ export default function submit(){
     let style = `
         {
             font-size:20px;
+            height:40px;
             padding:5px 10px;
             background:var(--colorBlue);
             color:var(--colorWhite);
@@ -23,6 +24,7 @@ export default function submit(){
         "click",
         async function a(e){
             e.target.disabled = true
+            e.target.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
             let user = e.target.parentElement.children[1].children[0]
             let password = e.target.parentElement.children[1].children[1]
@@ -66,6 +68,7 @@ export default function submit(){
             }
 
             e.target.disabled = false
+            e.target.innerHTML = "Entrar"
         }
     )
 

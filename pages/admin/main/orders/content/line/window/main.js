@@ -1,5 +1,4 @@
 import head from "./head/main.js"
-import info from "./info/main.js"
 import confirm from "./confirm/main.js"
 import delete_ from "./delete_/main.js"
 
@@ -26,7 +25,6 @@ export default function window(o, b){
 
     const window = cE("div", style)
     window.appendChild(head())
-    window.appendChild(info(o, b))
     window.appendChild(confirm(o))
     window.appendChild(delete_(o))
     return(window)
