@@ -52,7 +52,7 @@ export default function save(p){
             if(title.value != p.title || price != p.price || description != p.description){                
                 await axios.post(apiURL + "/creator/changeProductInfo", {id:p.id, title:title.value, price:price, description:description})
                     .then(r => {
-                        showWindow("Alterações salvas. Talvez seja preciso atualizar a página para que as alterações sejam mostradas nessa sessão. Em até 24h elas serão propagadas para todo o site")
+                        showWindow("Alterações salvas. Talvez seja preciso atualizar a página para que as alterações sejam mostradas nessa sessão. Em até 24h elas estarão no link do produto")
                         e.target.parentElement.children[0].children[0].click()
                     })
                     .catch(r => showWindow("Nossos servidores estão sendo atualizados. Aguarde alguns minutos para tentar novamente"))
