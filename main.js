@@ -156,7 +156,7 @@ window.construct = function construct(d){
             }
         }
         else{
-            root.appendChild(admin())
+            root.appendChild(main())
         }
     }
     else{
