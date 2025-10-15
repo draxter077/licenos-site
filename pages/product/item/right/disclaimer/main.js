@@ -1,4 +1,4 @@
-export default function disclaimer(c){
+export default function disclaimer(d){
     let style = `
         {
             height:40%;
@@ -18,6 +18,6 @@ export default function disclaimer(c){
         }`
 
     const disclaimer = cE("div", style)
-    disclaimer.innerHTML = c
+    disclaimer.innerHTML = d
     return(disclaimer)
 }

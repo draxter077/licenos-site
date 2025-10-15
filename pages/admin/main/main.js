@@ -17,6 +17,27 @@ export default function main(data){
         }`
 
     const main = cE("div", style)
+    let logProducts = []
+    let pdts = data.products
+    let cs = data.creators
+    for(let i = 0; i < pdts.length; i++){
+        let p = pdts[i]
+        let c
+        for(let j = 0; j < cs.length; j++){if(cs[j].id == p.creator){c = cs[j];break}}
+        logProducts.push(
+            {
+                id:p.id,
+                src:`./assets/face/${p.id}.png`,
+                title:p.title,
+                description:p.description,
+                author:c.name,
+                pages:p.pages,
+                price:p.price
+            }
+        )
+    }
+    console.log(logProducts)
+
     main.appendChild(head())
     main.appendChild(finance(data.creators, data.orders, data.products))
     main.appendChild(orders(data.orders, data.buyers))

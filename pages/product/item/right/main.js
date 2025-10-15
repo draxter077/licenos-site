@@ -21,7 +21,7 @@ export default function right(b){
 
     const right = cE("div", style)
     right.appendChild(identification(b.title, b.author, b.pages))
-    right.appendChild(disclaimer(b.content))
+    right.appendChild(disclaimer(b.description))
     right.appendChild(payInfo(b.price))
     right.appendChild(button(b))
     return(right)
