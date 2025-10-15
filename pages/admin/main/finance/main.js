@@ -20,7 +20,7 @@ export default function finance(cs, os, ps){
     let sales = 0, revenue = 0
     for(let i = 0; i < os.length; i++){
         let o = os[i]
-        if(datetime(o.time).date.slice(3,10) == monthYear){
+        if(datetime(o.time).date.slice(3,10) == monthYear && o.status == "Concluído"){
             for(let j = 0; j < ps.length; j++){
                 let p = ps[j]
                 if(o.product == p.id){
