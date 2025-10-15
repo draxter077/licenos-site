@@ -26,7 +26,7 @@ export default function confirm(o){
 
     confirm.addEventListener(
         "click",
-        async () => {
+        async (e) => {
             confirm.disabled = true
             confirm.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
@@ -44,6 +44,7 @@ export default function confirm(o){
             await axios.post(apiURL + "/product/updates", {src:"licenos", action:"endOrder", orderID:o.id})
                 .then(r => {
                     showWindow("Pedido enviado. Recarregue a página para ver as alterações")
+                    e.target.parentElement.children[0].children[0].click()
                 })
                 .catch(r => showWindow("Algum problema foi encontrado"))
 

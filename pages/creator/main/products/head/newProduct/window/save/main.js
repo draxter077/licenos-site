@@ -76,7 +76,7 @@ export default function save(){
                                 price:price,
                                 pages:pages
                             }
-                            document.getElementById("root").children[0].children[0].children[4].children[2].appendChild(line(p))
+                            document.getElementById("root").children[0].children[0].children[5].children[2].appendChild(line(p))
                         })
                         .catch(r => alert("Algum problema foi encontrado"))
                 }

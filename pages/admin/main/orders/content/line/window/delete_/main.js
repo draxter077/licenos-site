@@ -23,7 +23,7 @@ export default function delete_(o){
 
     delete_.addEventListener(
         "click",
-        async () => {
+        async (e) => {
             delete_.disabled = true
             delete_.innerHTML = "<img style='height:100%;' src='https://portal.ufvjm.edu.br/a-universidade/cursos/grade_curricular_ckan_novo/loading.gif/@@images/image.gif'/>"
 
@@ -41,6 +41,7 @@ export default function delete_(o){
             await axios.post(apiURL + "/product/updates", {src:"licenos", action:"deleteOrder", orderID:o.id})
                 .then(r => {
                     showWindow("Pedido excluído. Recarregue a página para ver as alterações")
+                    e.target.parentElement.children[0].children[0].click()
                 })
                 .catch(r => showWindow("Algum problema foi encontrado"))
 
