@@ -108,7 +108,7 @@ export default function button(b){
                         document.body.children[4].children[0].children[0].children[0].children[0].children[0].children[0].click()
                     })
                     .catch(response => {
-                        console.log(response.response.data)
+                        console.log(response)
                         let status = response.response.status
                         if(status == 502){showWindow("Ops! Nossos servidores estão sendo atualizados. Tente novamente mais tarde")}
                     })
