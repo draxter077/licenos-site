@@ -281,5 +281,5 @@ window.datetime = function datetime(ms){
 
     return({date:date, time:time})
 }
-    
+
 construct()
