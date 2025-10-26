@@ -102,7 +102,7 @@ export default function button(b){
                             })
                         }
                         await renderWalletBrick(bricksBuilder)
-                        await new Promise(r => setTimeout(r, 500))
+                        await new Promise(r => setTimeout(r, 1000))
 
                         // use children[5] for testing
                         document.body.children[4].children[0].children[0].children[0].children[0].children[0].children[0].click()
