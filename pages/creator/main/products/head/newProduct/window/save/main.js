@@ -42,7 +42,7 @@ export default function save(){
                 document.getElementById("root").appendChild(w)
                 await new Promise(resolve => setTimeout(resolve, 10))
                 w.style.opacity = 1
-                await new Promise(resolve => setTimeout(resolve, 5000))
+                await new Promise(resolve => setTimeout(resolve, 10000))
                 w.style.opacity = 0
                 await new Promise(resolve => setTimeout(resolve, 550))
                 document.getElementById("root").removeChild(w)
@@ -76,7 +76,7 @@ export default function save(){
                                 price:price,
                                 pages:pages
                             }
-                            document.getElementById("root").children[0].children[0].children[5].children[2].appendChild(line(p))
+                            document.getElementById("root").children[0].children[0].children[5].children[2].appendChild(line(p, 0))
                         })
                         .catch(r => alert("Algum problema foi encontrado"))
                 }
