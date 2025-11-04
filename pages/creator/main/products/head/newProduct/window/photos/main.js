@@ -1,4 +1,4 @@
-export default function photos(){
+export default function photos(f){
     let style = `
         {
             font-size:18px;
@@ -13,6 +13,6 @@ export default function photos(){
         }`
 
     const photos = cE("div", style)
-    photos.innerHTML = `Envie o PDF do produto para o email contato@licenos.com.br, usando o título do produto como assunto.<br>O PDF deve ter até 25MB. Recomendamos compressão pela ferramenta <a href="https://www.ilovepdf.com/pt/comprimir_pdf" target="_blank">iLovePDF</a>`
+    photos.innerHTML = `Arquivo ${f.name} (${Math.floor(f.size/100000)/10}MB) selecionado`
     return(photos)
 }

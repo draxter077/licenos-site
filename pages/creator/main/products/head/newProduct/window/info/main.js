@@ -1,6 +1,6 @@
 import data from "./data/main.js"
 
-export default function info(){
+export default function info(f){
     let style = `
         {
             display:flex;
@@ -14,7 +14,7 @@ export default function info(){
         }`
 
     const info = cE("div", style)
-    info.appendChild(data("Título", ""))
+    info.appendChild(data("Título", f.name.replace(".pdf", "")))
     info.appendChild(data("Matéria", ""))
     info.appendChild(data("Descrição", ""))
     info.appendChild(data("Preço", "1234,50"))

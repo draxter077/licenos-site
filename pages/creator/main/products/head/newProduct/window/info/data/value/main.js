@@ -21,6 +21,7 @@ export default function value(v, t){
     value.rows = "1"
     if(t == "Descrição"){value.rows = "3"}
     value.placeholder = v
+    if(t == "Título"){value.value = v}
     if(t == "Preço" || t == "Páginas"){value.type = "number"}
     return(value)
 }

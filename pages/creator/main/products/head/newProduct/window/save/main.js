@@ -1,7 +1,6 @@
-import line from "../../../../content/line/main.js"
 import window from "./window/main.js"
 
-export default function save(){
+export default function save(file){
     let style = `
         {
             font-size:20px;
@@ -66,9 +65,9 @@ export default function save(){
                     description = description.value.replaceAll("\n", "<br>")
 
                     await axios.post(apiURL + "/creator/addProduct", {title:title.value, category:category.value, description:description, price:price, pages:pages.value})
-                        .then(r => {
-                            showWindow("Produto salvo com ID " + r.data.id + ". Mais informações em seu e-mail")
-                            e.target.parentElement.children[0].children[0].click()
+                        .then(async r => {
+                            showWindow("Arquivo em processamento")
+
                             let p = {
                                 id:r.data.id,
                                 title:title.value,
@@ -76,9 +75,17 @@ export default function save(){
                                 price:price,
                                 pages:pages
                             }
-                            document.getElementById("root").children[0].children[0].children[5].children[2].appendChild(line(p, 0))
+
+                            const formData = new FormData()
+                            formData.append("file", file)
+                            await axios.post(apiURL + '/creator/uploadNewProduct', formData, {headers:{'Content-Type': 'multipart/form-data', 'fileID':r.data.id}})
+                                .then(resolve => {
+                                    e.target.parentElement.children[0].children[0].click()
+                                    showWindow("Produto salvo com ID " + r.data.id + ". Ele aparecerá aqui assim que passar pela aprovação")
+                                })
+                                .catch(response => {console.log(response);showWindow("Houve uma falha no processamento do arquivo. Tente novamente mais tarde")})
                         })
-                        .catch(r => alert("Algum problema foi encontrado"))
+                        .catch(r => {console.log(r);showWindow("Houve uma falha no processamento do arquivo. Tente novamente mais tarde")})
                 }
             }
 

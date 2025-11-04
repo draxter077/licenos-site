@@ -3,7 +3,7 @@ import photos from "./photos/main.js"
 import info from "./info/main.js"
 import save from "./save/main.js"
 
-export default function window(){
+export default function window(file){
     let style = `
         {
             position:fixed;
@@ -26,8 +26,8 @@ export default function window(){
 
     const window = cE("div", style)
     window.appendChild(head())
-    window.appendChild(photos())
-    window.appendChild(info())
-    window.appendChild(save())
+    window.appendChild(photos(file))
+    window.appendChild(info(file))
+    window.appendChild(save(file))
     return(window)
 }

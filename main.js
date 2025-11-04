@@ -4,6 +4,8 @@ import creator from "./pages/creator/main.js"
 import admin from "./pages/admin/main.js"
 import finalizarpedido from "./pages/finalizarpedido/main.js"
 
+import test from "./pages/test/main.js"
+
 window.cE = function cE(t, stl){
     function addClass(){
         function randomName(names){
@@ -156,7 +158,7 @@ window.construct = function construct(d){
             }
         }
         else{
-            root.appendChild(main())
+            root.appendChild(creator())
         }
     }
     else{

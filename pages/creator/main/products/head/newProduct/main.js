@@ -24,10 +24,24 @@ export default function newProduct(){
     newProduct.addEventListener(
         "click",
         async function a(){
-            let w = window()
-            document.getElementById("root").appendChild(w)
-            await new Promise(resolve => setTimeout(resolve, 100))
-            w.style.transform = "scale(1)"
+            const input = document.createElement("input")
+            input.type = "file"
+            input.name = "file"
+            input.click()
+            input.addEventListener("change", async function a(){
+                const file = input.files[0]
+                if(file != undefined){
+                    if(file.size > 25000000 || file.type != "application/pdf"){
+                        alert("O arquvo deve ser formato PDF e ter até 25MB. Comprima o arquivo e tente novamente")
+                    }
+                    else{
+                        let w = window(file)
+                        document.getElementById("root").appendChild(w)
+                        await new Promise(resolve => setTimeout(resolve, 100))
+                        w.style.transform = "scale(1)"
+                    }
+                }
+            })
         }
     )
     return(newProduct)
