@@ -54,7 +54,7 @@ export default function save(file){
             else{
                 category.value = category.value.replaceAll(" ","")
                 if(category.value == "EnsinoReligioso"){category.value = "Ensino Religioso"}
-                
+
                 if(category.value != "Português" && category.value != "Redação"
                     && category.value != "História" && category.value != "Geografia"
                     && category.value != "Sociologia" && category.value != "Filosofia"
@@ -70,15 +70,6 @@ export default function save(file){
                     await axios.post(apiURL + "/creator/addProduct", {title:title.value, category:category.value, description:description, price:price, pages:pages.value})
                         .then(async r => {
                             showWindow("Arquivo em processamento")
-
-                            let p = {
-                                id:r.data.id,
-                                title:title.value,
-                                description:description,
-                                price:price,
-                                pages:pages
-                            }
-
                             const formData = new FormData()
                             formData.append("file", file)
                             await axios.post(apiURL + '/creator/uploadNewProduct', formData, {headers:{'Content-Type': 'multipart/form-data', 'fileID':r.data.id}})
