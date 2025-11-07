@@ -52,6 +52,9 @@ export default function save(file){
                 showWindow("Preencha todos os campos")
             }
             else{
+                category.value = category.value.replaceAll(" ","")
+                if(category.value == "EnsinoReligioso"){category.value = "Ensino Religioso"}
+                
                 if(category.value != "Português" && category.value != "Redação"
                     && category.value != "História" && category.value != "Geografia"
                     && category.value != "Sociologia" && category.value != "Filosofia"
